@@ -1,6 +1,6 @@
 #include "MemoryHandler.h"
 
-MemoryHandler::MemoryHandler(char* procName, size_t bufferSize)
+MemoryHandler::MemoryHandler(char* procName, size_t bufferSize) : procID(NULL)
 {
 	int len = strlen(procName) + 1;
 	this->procName = new char[len];
@@ -36,14 +36,15 @@ void MemoryHandler::getProcID()
 	else
 	{
 		CloseHandle(snapshot);
-		procID = 0;
+		procID = NULL;
 		return;
 	}
 }
 
 void MemoryHandler::open(DWORD accessRights)
 {
-
+	getProcID();
+	hProc = OpenProcess(accessRights, false, procID);
 }
 
 void MemoryHandler::close()

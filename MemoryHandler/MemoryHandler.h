@@ -11,6 +11,7 @@ public:
 
 	void open(DWORD accessRights = PROCESS_ALL_ACCESS);
 	void close();
+	DWORD getProcID();
 
 private:
 	char*  procName;
@@ -19,6 +20,6 @@ private:
 	byte*  buffer;
 	size_t bufferSize;
 
-	void getProcID();
+	void fingProcID();
 };
 

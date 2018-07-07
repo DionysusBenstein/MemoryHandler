@@ -15,7 +15,7 @@ MemoryHandler::~MemoryHandler()
 	delete[] this->buffer;
 }
 
-void MemoryHandler::getProcID()
+void MemoryHandler::fingProcID()
 {
 	HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
 	PROCESSENTRY32 procInfo;
@@ -27,7 +27,7 @@ void MemoryHandler::getProcID()
 		{
 			if (_stricmp(procName, procInfo.szExeFile) == 0)
 			{
-				procID = procInfo.th32ProcessID;
+				this->procID = procInfo.th32ProcessID;
 				CloseHandle(snapshot);
 				return;
 			}
@@ -36,18 +36,23 @@ void MemoryHandler::getProcID()
 	else
 	{
 		CloseHandle(snapshot);
-		procID = NULL;
+		this->procID = NULL;
 		return;
 	}
 }
 
 void MemoryHandler::open(DWORD accessRights)
 {
-	getProcID();
-	hProc = OpenProcess(accessRights, false, procID);
+	fingProcID();
+	this->hProc = OpenProcess(accessRights, false, this->procID);
 }
 
 void MemoryHandler::close()
 {
-	CloseHandle(hProc);
+	CloseHandle(this->hProc);
+}
+
+DWORD MemoryHandler::getProcID()
+{
+	return this->procID;
 }

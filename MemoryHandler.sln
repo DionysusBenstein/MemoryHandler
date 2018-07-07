@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MemoryHandler", "MemoryHandler\MemoryHandler.vcxproj", "{BEB9269E-1244-4F4E-8D40-2B6E58720C94}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BEB9269E-1244-4F4E-8D40-2B6E58720C94}.Debug|x64.ActiveCfg = Debug|x64
+		{BEB9269E-1244-4F4E-8D40-2B6E58720C94}.Debug|x64.Build.0 = Debug|x64
+		{BEB9269E-1244-4F4E-8D40-2B6E58720C94}.Debug|x86.ActiveCfg = Debug|Win32
+		{BEB9269E-1244-4F4E-8D40-2B6E58720C94}.Debug|x86.Build.0 = Debug|Win32
+		{BEB9269E-1244-4F4E-8D40-2B6E58720C94}.Release|x64.ActiveCfg = Release|x64
+		{BEB9269E-1244-4F4E-8D40-2B6E58720C94}.Release|x64.Build.0 = Release|x64
+		{BEB9269E-1244-4F4E-8D40-2B6E58720C94}.Release|x86.ActiveCfg = Release|Win32
+		{BEB9269E-1244-4F4E-8D40-2B6E58720C94}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A9D102C-83A8-4BFC-A2F4-DD7E37D2EA92}
+	EndGlobalSection
+EndGlobal

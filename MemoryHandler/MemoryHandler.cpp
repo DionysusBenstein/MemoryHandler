@@ -24,7 +24,7 @@ void MemoryHandler::fingProcID()
 	{
 		while (Process32Next(snapshot, &procInfo))
 		{
-			if (_stricmp(procName, procInfo.szExeFile) == 0)
+			if (_stricmp(this->procName, procInfo.szExeFile) == 0)
 			{
 				this->procID = procInfo.th32ProcessID;
 				CloseHandle(snapshot);

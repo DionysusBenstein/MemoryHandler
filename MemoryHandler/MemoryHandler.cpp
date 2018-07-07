@@ -1,7 +1,8 @@
 #include "MemoryHandler.h"
 
-MemoryHandler::MemoryHandler(char* procName, size_t bufferSize) : procID(NULL)
+MemoryHandler::MemoryHandler(char* procName, size_t bufferSize) /*: procID(NULL)*/
 {
+	procID = 0;
 	int len = strlen(procName) + 1;
 	this->procName = new char[len];
 	strcpy_s(procName, len, procName);

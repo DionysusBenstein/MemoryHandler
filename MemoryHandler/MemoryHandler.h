@@ -11,9 +11,11 @@ public:
 
 	void open(DWORD accessRights = PROCESS_ALL_ACCESS);
 	void close();
-	DWORD getProcID();
 
 	void write(void* ptr, DWORD to, size_t size);
+	void write(void* ptr, DWORD to, size_t size, DWORD memProtect);
+
+	DWORD getProcID();
 
 private:
 	char*  procName;

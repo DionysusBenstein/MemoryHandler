@@ -60,3 +60,12 @@ void MemoryHandler::write(void* ptr, DWORD to, size_t size)
 {
 	WriteProcessMemory(this->hProc, (LPVOID)to, ptr, size, NULL);
 }
+
+void MemoryHandler::write(void* ptr, DWORD to, size_t size, DWORD memProtect)
+{
+	//need check
+	DWORD oldMemProtect = NULL;
+	VirtualProtectEx(hProc, (LPVOID)to, size, memProtect, &oldMemProtect);
+	WriteProcessMemory(this->hProc, (LPVOID)to, ptr, size, NULL);
+	VirtualProtectEx(hProc, (LPVOID)to, size, oldMemProtect, &oldMemProtect);
+}

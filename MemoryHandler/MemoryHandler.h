@@ -13,10 +13,12 @@ public:
 	void close();
 
 private:
-	char* pName;
-	DWORD pID;
+	char*  procName;
+	DWORD  procID;
 	HANDLE hProc;
-	byte* buffer;
+	byte*  buffer;
 	size_t bufferSize;
+
+	void getProcID();
 };
 

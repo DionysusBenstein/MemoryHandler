@@ -13,6 +13,8 @@ public:
 	void close();
 	DWORD getProcID();
 
+	void write(void* ptr, DWORD to, size_t size);
+
 private:
 	char*  procName;
 	DWORD  procID;

@@ -55,3 +55,8 @@ DWORD MemoryHandler::getProcID()
 {
 	return this->procID;
 }
+
+void MemoryHandler::write(void* ptr, DWORD to, size_t size)
+{
+	WriteProcessMemory(this->hProc, (LPVOID)to, ptr, size, NULL);
+}

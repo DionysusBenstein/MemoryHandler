@@ -49,5 +49,5 @@ void MemoryHandler::open(DWORD accessRights)
 
 void MemoryHandler::close()
 {
-
+	CloseHandle(hProc);
 }

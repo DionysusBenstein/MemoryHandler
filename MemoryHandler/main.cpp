@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-	MemoryHandler *memHandler = new MemoryHandler("notepad.exe");
+	MemoryHandler *memHandler = new MemoryHandler((char*)"notepad.exe");
 	memHandler->open();
 	cout << "Procces ID:\t" << memHandler->getProcID() << endl;
 	memHandler->close();

@@ -82,12 +82,14 @@ void MemoryHandler::write(void* ptr, DWORD to, size_t size, DWORD memProtect)
 
 MemoryHandler & MemoryHandler::read(DWORD from, size_t size)
 {
+	memset(this->buffer, 0, this->bufferSize);
 	ReadProcessMemory(hProc, (LPVOID)from, buffer, size, NULL);
 }
 
 MemoryHandler & MemoryHandler::read(DWORD from, size_t size, DWORD memProtect)
 {
 	DWORD oldMemProtect = NULL;
+	memset(this->buffer, 0, this->bufferSize);
 	VirtualProtectEx(hProc, (LPVOID)from, size, memProtect, &oldMemProtect); //need check on size
 	ReadProcessMemory(hProc, (LPVOID)from, buffer, size, NULL);
 	VirtualProtectEx(hProc, (LPVOID)from, size, oldMemProtect, &oldMemProtect);

@@ -54,5 +54,5 @@ inline T MemoryHandler::toNum()
 {
 	T temp = 0;
 	memcpy(&temp, this->buffer, sizeof(T));
-	return T;
+	return temp;
 }

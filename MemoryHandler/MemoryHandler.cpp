@@ -84,6 +84,7 @@ MemoryHandler& MemoryHandler::read(DWORD from, size_t size)
 {
 	memset(this->buffer, 0, this->bufferSize);
 	ReadProcessMemory(hProc, (LPVOID)from, buffer, size, NULL);
+	return *this;
 }
 
 MemoryHandler& MemoryHandler::read(DWORD from, size_t size, DWORD memProtect)
@@ -93,6 +94,7 @@ MemoryHandler& MemoryHandler::read(DWORD from, size_t size, DWORD memProtect)
 	VirtualProtectEx(hProc, (LPVOID)from, size, memProtect, &oldMemProtect); //need check on size
 	ReadProcessMemory(hProc, (LPVOID)from, buffer, size, NULL);
 	VirtualProtectEx(hProc, (LPVOID)from, size, oldMemProtect, &oldMemProtect);
+	return *this;
 }
 
 char* MemoryHandler::toStringA()

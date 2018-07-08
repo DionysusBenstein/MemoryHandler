@@ -32,6 +32,9 @@ public:
 	MemoryHandler& read(DWORD from, size_t size);
 	MemoryHandler& read(DWORD from, size_t size, DWORD memProtect);
 
+	template <typename T>
+	T toNum();
+
 	DWORD getProcID();
 
 private:
@@ -43,3 +46,11 @@ private:
 
 	void fingProcID();
 };
+
+template<typename T>
+inline T MemoryHandler::toNum()
+{
+	T temp = 0;
+	memcpy(&temp, this->buffer, sizeof(T));
+	return T;
+}

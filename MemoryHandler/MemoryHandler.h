@@ -34,6 +34,8 @@ public:
 
 	template <typename T>
 	T toNum();
+	char* toStringA();
+	wchar_t* toStringU();
 
 	DWORD getProcID();
 

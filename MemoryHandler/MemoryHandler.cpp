@@ -95,6 +95,16 @@ MemoryHandler & MemoryHandler::read(DWORD from, size_t size, DWORD memProtect)
 	VirtualProtectEx(hProc, (LPVOID)from, size, oldMemProtect, &oldMemProtect);
 }
 
+char* MemoryHandler::toStringA()
+{
+	return (char*)buffer;
+}
+
+wchar_t* MemoryHandler::toStringU()
+{
+	return (wchar_t*)buffer;
+}
+
 DWORD MemoryHandler::getProcID()
 {
 	return this->procID;

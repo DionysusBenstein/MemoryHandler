@@ -21,7 +21,7 @@ MemoryHandler::MemoryHandler(char* procName, size_t bufferSize) : procID(NULL), 
 	int len = strlen(procName) + 1;
 	this->procName = new char[len];
 	strcpy_s(this->procName, len, procName); 
-	this->buffer = new byte[32];
+	this->buffer = new byte[bufferSize];
 }
 
 MemoryHandler::~MemoryHandler()

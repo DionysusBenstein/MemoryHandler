@@ -9,7 +9,7 @@
 /* Copyright © 2018 Dionysus Benstein. All rights reserved.        */
 
 /* Description: A class implementation represents the basic 
-				functional.                                        */
+				functional.                                        
 
 /*******************************************************************/
 

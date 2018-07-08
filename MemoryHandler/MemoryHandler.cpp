@@ -1,6 +1,22 @@
+/*******************************************************************/
+
+/* Original File Name: MemoryHandler.cpp                           */
+
+/* Date: 07-07-2018                                                */
+
+/* Developer: Dionysus Benstein                                    */
+
+/* Copyright © 2018 Dionysus Benstein. All rights reserved.        */
+
+/* Description: A class implementation represents the basic 
+				functional.                                        */
+
+/*******************************************************************/
+
+
 #include "MemoryHandler.h"
 
-MemoryHandler::MemoryHandler(char* procName, size_t bufferSize) : procID(NULL)
+MemoryHandler::MemoryHandler(char* procName, size_t bufferSize) : procID(NULL), bufferSize(bufferSize)
 {
 	int len = strlen(procName) + 1;
 	this->procName = new char[len];
@@ -51,21 +67,33 @@ void MemoryHandler::close()
 	CloseHandle(this->hProc);
 }
 
-DWORD MemoryHandler::getProcID()
-{
-	return this->procID;
-}
-
 void MemoryHandler::write(void* ptr, DWORD to, size_t size)
 {
-	WriteProcessMemory(this->hProc, (LPVOID)to, ptr, size, NULL);
+	WriteProcessMemory(hProc, (LPVOID)to, ptr, size, NULL);
 }
 
 void MemoryHandler::write(void* ptr, DWORD to, size_t size, DWORD memProtect)
 {
-	//need check
 	DWORD oldMemProtect = NULL;
-	VirtualProtectEx(hProc, (LPVOID)to, size, memProtect, &oldMemProtect);
-	WriteProcessMemory(this->hProc, (LPVOID)to, ptr, size, NULL);
+	VirtualProtectEx(hProc, (LPVOID)to, size, memProtect, &oldMemProtect); //need check on size
+	WriteProcessMemory(hProc, (LPVOID)to, ptr, size, NULL);
 	VirtualProtectEx(hProc, (LPVOID)to, size, oldMemProtect, &oldMemProtect);
+}
+
+MemoryHandler & MemoryHandler::read(DWORD from, size_t size)
+{
+	ReadProcessMemory(hProc, (LPVOID)from, buffer, size, NULL);
+}
+
+MemoryHandler & MemoryHandler::read(DWORD from, size_t size, DWORD memProtect)
+{
+	DWORD oldMemProtect = NULL;
+	VirtualProtectEx(hProc, (LPVOID)from, size, memProtect, &oldMemProtect); //need check on size
+	ReadProcessMemory(hProc, (LPVOID)from, buffer, size, NULL);
+	VirtualProtectEx(hProc, (LPVOID)from, size, oldMemProtect, &oldMemProtect);
+}
+
+DWORD MemoryHandler::getProcID()
+{
+	return this->procID;
 }

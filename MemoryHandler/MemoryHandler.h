@@ -1,3 +1,17 @@
+/*******************************************************************/
+
+/* Original File Name: MemoryHandler.h                             */
+
+/* Date: 07-07-2018                                                */
+
+/* Developer: Dionysus Benstein                                    */
+
+/* Copyright © 2018 Dionysus Benstein. All rights reserved.        */
+
+/* Description: A class representing the basic functional.         */
+
+/*******************************************************************/
+
 #pragma once
 
 #include <windows.h>
@@ -14,6 +28,9 @@ public:
 
 	void write(void* ptr, DWORD to, size_t size);
 	void write(void* ptr, DWORD to, size_t size, DWORD memProtect);
+	
+	MemoryHandler& read(DWORD from, size_t size);
+	MemoryHandler& read(DWORD from, size_t size, DWORD memProtect);
 
 	DWORD getProcID();
 
@@ -26,4 +43,3 @@ private:
 
 	void fingProcID();
 };
-

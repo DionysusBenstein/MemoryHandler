@@ -17,7 +17,7 @@ MemoryHandler::~MemoryHandler()
 void MemoryHandler::fingProcID()
 {
 	HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
-	PROCESSENTRY32 procInfo;
+	PROCESSENTRY32 procInfo; //Structure that stores data about process
 	procInfo.dwSize = sizeof(PROCESSENTRY32);
 
 	if (Process32First(snapshot, &procInfo))

@@ -5,9 +5,11 @@ using namespace std;
 
 int main()
 {
-	MemoryHandler memHandler((char*)"devenv.exe");
+	char* processName = (char*)"chrome.exe";
+	MemoryHandler memHandler(processName);
 	memHandler.open();
-	cout << "Procces ID:\t" << memHandler.getProcID() << endl;
+	cout << "Process name" << "\tProcces ID" << endl;
+	cout << processName << "\t" << memHandler.getProcID() << endl;
 	memHandler.close();
 
 	return 0;

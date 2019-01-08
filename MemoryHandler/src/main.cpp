@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-	char* processName = (char*)"Telegram.exe";
+	char* processName = (char*)"chrome.exe";
 	int modifiedNumber = 13;
 
 	MemoryHandler memHandler(processName);
